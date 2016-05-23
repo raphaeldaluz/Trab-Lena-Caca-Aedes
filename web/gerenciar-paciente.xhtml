@@ -1,0 +1,134 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:body>
+        <ui:composition template="template2.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <p:fieldset>
+                        <p:growl id="messages" showDetail="true" />
+                        <h:panelGrid columns="4" style="width:100%">
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Doença: "/>
+                            <p:selectOneMenu value="#{pacienteBean.paciente.doenca}">
+                              <f:selectItem itemLabel="Selecione a Doença"/>
+                              <f:selectItem itemLabel="Dengue" itemValue="Dengue"/>
+                              <f:selectItem itemLabel="Febre Zika" itemValue="Febre Zika"/>
+                              <f:selectItem itemLabel="Febre Chikungunha" itemValue="Febre Chikungunha"/>
+                            </p:selectOneMenu>
+                            </h:panelGroup>    
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Data da Notificação: "/>
+                            <p:calendar size="8" value="#{pacienteBean.paciente.dataNotificacao}" showOn="button" mask="99/99/99"/>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Unidade Notificadora: "/>
+                            <p:inputText value="#{pacienteBean.paciente.unidadeNotificadora}"/>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Nome do Paciente: "/>
+                            <p:inputText value="#{pacienteBean.paciente.nomePaciente}"/>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Data de Nascimento: "/>
+                            <p:calendar size="5" value="#{pacienteBean.paciente.dataNasc}" showOn="button" mask="99/99/99"/>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup  > 
+                            <p:outputLabel value="Sexo: "/>
+                            <p:selectOneButton  value="#{pacienteBean.paciente.sexo}">
+                              <f:selectItem itemLabel="M" itemValue="Masculino"/>
+                              <f:selectItem itemLabel="F" itemValue="Feminino"/>
+                            </p:selectOneButton>                            
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Endereço: "/>   
+                            <p:selectOneMenu style="top:7px" value="#{pacienteBean.paciente.rua}">
+                                <f:selectItem itemLabel="Selecione"/>
+                              <f:selectItem itemLabel="Avenida" itemValue="Av." />
+                              <f:selectItem itemLabel="Estrada" itemValue="Estr."/>
+                              <f:selectItem itemLabel="Rua" itemValue="Rua"/>
+                            </p:selectOneMenu>
+                            <p:inputText style="margin:4px" value="#{pacienteBean.paciente.nomeRua}"/>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Número: "/>
+                            <p:inputText size="3" value="#{pacienteBean.paciente.numEndereco}"/>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="CEP: "/>
+                            <p:inputMask placeholder="ex:12536-280" size="10" mask="99999-999"/>
+                            <p:link value=" Buscar o Cep?#{pacienteBean.paciente.cep}" href="http://www.buscacep.correios.com.br/sistemas/buscacep/" target="_blank"/>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Bairro: "/>
+                            <p:selectOneMenu style="top:6px" value="#{pacienteBean.paciente.bairro}">
+                              <f:selectItem itemLabel="Escolha o Bairro"/>
+                              <f:selectItem itemLabel="Umarizal" itemValue="Umarizal" />
+                              <f:selectItem itemLabel="Batista Campos" itemValue="Batista Campos"/>
+                              <f:selectItem itemLabel="Marco" itemValue="Marco"/>
+                            </p:selectOneMenu>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Município: "/>
+                            <p:selectOneMenu style="top:7px" value="#{pacienteBean.paciente.municipio}">
+                                <f:selectItem itemLabel="Escolha o Município"/>
+                              <f:selectItem itemLabel="Belém" itemValue="Belém" />
+                              <f:selectItem itemLabel="Ananindeua" itemValue="Ananindeua"/>
+                              <f:selectItem itemLabel="Marituba" itemValue="Marituba"/>
+                            </p:selectOneMenu>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="UF: "/>
+                            <p:selectOneMenu style="width:90px;top:6px" value="#{pacienteBean.paciente.uf}">
+                              <f:selectItem/>
+                              <f:selectItem itemLabel="PA" itemValue="PA" />
+                              <f:selectItem itemLabel="AM" itemValue="AM"/>
+                              <f:selectItem itemLabel="DF" itemValue="DF"/>
+                            </p:selectOneMenu>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="Criterio de Confirmação/Descarte: "/>
+                            <p:selectOneRadio value="#{pacienteBean.paciente.criterioConfirmacao}">
+                                <f:selectItem itemLabel="Laboratorial" itemValue="Lab"/>
+                                <f:selectItem itemLabel="Clínico/Epidemiologico" itemValue="Clinico"/>
+                            </p:selectOneRadio>
+                            </h:panelGroup>
+                            
+                            <h:panelGroup>
+                            <p:outputLabel value="O Caso é autóctone do município de residênica: "/>
+                            <p:selectOneRadio value="#{pacienteBean.paciente.casoAutoctone}">
+                                <f:selectItem itemLabel="Sim" itemValue="S"/>
+                                <f:selectItem itemLabel="Não" itemValue="N"/>
+                                <f:selectItem itemLabel="Indeterminado" itemValue="I"/>
+                            </p:selectOneRadio>
+                            </h:panelGroup>
+                            
+                            <p:outputLabel/><p:outputLabel/>
+                            <h:panelGroup>
+                            <p:commandButton value="Salvar" action="#{pacienteBean.adicionar()}" update="@form" onsuccess="reset"></p:commandButton>
+                            <p:commandButton style="left:5%" value="Limpar" ajax="false" immediate="true" type="reset"/>
+                            </h:panelGroup>
+                        </h:panelGrid>
+                    </p:fieldset>                    
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
